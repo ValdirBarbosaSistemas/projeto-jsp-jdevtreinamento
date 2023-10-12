@@ -3,6 +3,8 @@ package connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import org.postgresql.Driver;
+
 public class SingleConnectionBanco {
 
 	// Conexao com o banco postgres
@@ -29,6 +31,8 @@ public class SingleConnectionBanco {
 		try {
 			if (connection == null) {
 				Class.forName("org.postgresql.Driver");// carrega o driver de conexao com o banco
+				
+				DriverManager.registerDriver(new org.postgresql.Driver());//Tive que fazer esse comando devido ao erro de ClassNotFoundException
 				connection = DriverManager.getConnection(banco, user, password);
 				connection.setAutoCommit(false);// para nao efetuar alteracoes no banco sem nossa permissao
 			}

@@ -69,6 +69,7 @@ public class DAOUsuarioRepository {
 		return modelLogin;
 	}
 	
+	//TODO VERIFICAR O PORQUE NAO APARECE A RELACAO DOS USUARIOS NA TELA
 	public List<ModelLogin> consultaUsuarioList(String nome) throws SQLException{
 		
 		List<ModelLogin> retorno = new ArrayList<>();
@@ -134,6 +135,7 @@ public class DAOUsuarioRepository {
 	}
 	
 	public List<ModelLogin> consultaUsuarios() throws SQLException{
+
 		List<ModelLogin> modelLogins = new ArrayList<>();
 		
 		String sql = "select * from model_login";
@@ -141,7 +143,7 @@ public class DAOUsuarioRepository {
 		
 		ResultSet resultado = stmt.executeQuery();
 		
-		if(resultado.next()) {
+		while(resultado.next()) {
 			ModelLogin modelLogin = new ModelLogin();
 			
 			modelLogin.setNome(resultado.getString("nome"));

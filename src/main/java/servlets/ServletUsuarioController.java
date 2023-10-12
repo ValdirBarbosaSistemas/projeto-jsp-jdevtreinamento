@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -70,8 +69,9 @@ public class ServletUsuarioController extends HttpServlet {
 				request.setAttribute("modelLogin", modelLogin);
 				
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+				
 			} else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("listarUsuario")) {
-				List<ModelLogin> modelLogins = new ArrayList<>();
+				List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarios();
 				
 				request.setAttribute("msg", "Usuários Carregados");
 				request.setAttribute("modelLogins", modelLogins);
