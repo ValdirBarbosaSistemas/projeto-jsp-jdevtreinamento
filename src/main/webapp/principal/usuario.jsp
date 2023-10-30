@@ -121,7 +121,7 @@
 														<tr>
 															<td><c:out value="${ml.id}"> </c:out></td>
 															<td><c:out value="${ml.nome}"> </c:out></td>
-															<td><button class="btn btn success" type="button">Ver</button></td>
+															<td><a class="btn btn success" href="<%=request.getContextPath()%>/ServletUsuarioController?acao=buscarEditar&id=${ml.id}">Ver</a></td>
 														</tr>
 													</c:forEach>
 												</tbody>

@@ -134,9 +134,9 @@ public class DAOUsuarioRepository {
 		return modelLogin;
 	}
 	
-	public List<ModelLogin> consultaUsuarios() throws SQLException{
+	public List<ModelLogin> consultaUsuarioList() throws SQLException{
 
-		List<ModelLogin> modelLogins = new ArrayList<>();
+		List<ModelLogin> retorno = new ArrayList<>();
 		
 		String sql = "select * from model_login";
 		PreparedStatement stmt = connection.prepareStatement(sql);
@@ -151,8 +151,8 @@ public class DAOUsuarioRepository {
 			modelLogin.setLogin(resultado.getString("login"));
 			modelLogin.setId(resultado.getLong("id"));
 			
-			modelLogins.add(modelLogin);
+			retorno.add(modelLogin);
 		}
-		return modelLogins;
+		return retorno;
 	}
 }
